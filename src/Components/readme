@@ -1,0 +1,35 @@
+<!-- // useLogout.js
+import { useState } from 'react';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
+
+export const useLogout = () => {
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+
+  const handleLogout = () => {
+    setLogoutDialogOpen(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    localStorage.removeItem('profileData');
+    window.location.reload(); // To redirect to the login or home page
+  };
+
+  const handleLogoutCancel = () => {
+    setLogoutDialogOpen(false);
+  };
+
+  const LogoutDialog = () => (
+    <Dialog open={logoutDialogOpen} onClose={() => setLogoutDialogOpen(false)}>
+      <DialogTitle>Confirm Logout</DialogTitle>
+      <DialogContent>
+        <Typography>Are you sure you want to logout?</Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleLogoutCancel} color="primary">No</Button>
+        <Button onClick={handleLogoutConfirm} color="primary">Yes</Button>
+      </DialogActions>
+    </Dialog>
+  );
+
+  return { handleLogout, LogoutDialog };
+}; -->
