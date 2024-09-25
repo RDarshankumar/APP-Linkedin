@@ -7,15 +7,18 @@ import { styled } from '@mui/material/styles';
 import Profile from './Profile';
 import SocialFeed from './SocialFeed';
 
+// Styled Components
 const SearchBar = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.grey[200],
+  backgroundColor: theme.palette.grey[100],
   '&:hover': {
-    backgroundColor: theme.palette.grey[300],
+    backgroundColor: theme.palette.grey[200],
+    boxShadow: `0 4px 8px rgba(0, 0, 0, 0.1)`,
   },
-  width: '50%',
+  width: '60%',
   marginLeft: theme.spacing(2),
+  transition: 'background-color 0.3s, box-shadow 0.3s',
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -32,6 +35,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   width: '100%',
   paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+  transition: 'width 0.3s',
 }));
 
 const MainAppBar = () => {
@@ -39,7 +43,7 @@ const MainAppBar = () => {
   const [profileImage, setProfileImage] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [jobModalOpen, setJobModalOpen] = useState(false);
-  const [showNewJobButton, setShowNewJobButton] = useState(false); // To show New Job+ button after form save
+  const [showNewJobButton, setShowNewJobButton] = useState(false);
   const [userDetails, setUserDetails] = useState({
     name: '',
     company: '',
@@ -53,7 +57,7 @@ const MainAppBar = () => {
     salary: '',
     location: '',
   });
-  const [jobPosts, setJobPosts] = useState([]); // State to hold job posts
+  const [jobPosts, setJobPosts] = useState([]);
 
   const handleProfileClick = () => {
     setIsProfileClicked(true);
@@ -83,7 +87,6 @@ const MainAppBar = () => {
     setJobDetails({ ...jobDetails, [e.target.name]: e.target.value });
   };
 
-  // Image URL cleanup to avoid memory leak
   useEffect(() => {
     return () => {
       if (userDetails.image) {
@@ -100,39 +103,37 @@ const MainAppBar = () => {
   };
 
   const handleAddJobPost = () => {
-    // Validate job details
     if (!jobDetails.title || !jobDetails.experience || !jobDetails.salary || !jobDetails.location) {
       alert("Please fill all fields before posting.");
       return;
     }
-    setJobPosts([...jobPosts, jobDetails]); // Add new job post to state
+    setJobPosts([...jobPosts, jobDetails]);
     setJobModalOpen(false);
-    setShowNewJobButton(true); // Show "New Job+" button after first post
+    setShowNewJobButton(true);
   };
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ background: 'linear-gradient(45deg, #3f51b5, #1976d2)', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
         <Toolbar>
-          <Typography variant="h6" noWrap onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
+          <Typography variant="h6" noWrap onClick={handleTitleClick} style={{ cursor: 'pointer', color: '#fff' }}>
             MyApp
           </Typography>
           <SearchBar>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon style={{ color: '#3f51b5' }} />
             </SearchIconWrapper>
             <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
           </SearchBar>
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* New Job+ Button in Navbar */}
           {showNewJobButton && (
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               startIcon={<AddIcon />}
               onClick={handleJobPostOpen}
-              sx={{ marginRight: 2 }}
+              sx={{ marginRight: 2, backgroundColor: '#f50057', '&:hover': { backgroundColor: '#c51162' } }}
             >
               New Job
             </Button>
@@ -147,12 +148,11 @@ const MainAppBar = () => {
       {isProfileClicked ? (
         <Profile onProfileImageChange={handleProfileImageChange} />
       ) : (
-        <SocialFeed jobPosts={jobPosts} /> // Pass jobPosts to PostApp
+        <SocialFeed jobPosts={jobPosts} />
       )}
 
-      {/* Job Post Modal */}
       <Modal open={jobModalOpen} onClose={handleJobModalClose}>
-        <Box p={4} bgcolor="white" mx="auto" my={8} borderRadius={2} maxWidth={500}>
+        <Box p={4} bgcolor="white" mx="auto" my={8} borderRadius={2} maxWidth={500} sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
           <Typography variant="h6">New Job Post</Typography>
           <TextField
             fullWidth

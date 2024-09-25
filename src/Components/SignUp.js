@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import Navbar from './Navbar'; // Import Navbar component
+import './SignUp.css';
+
 
 function SignUp() {
     const [userData, setUserData] = useState({

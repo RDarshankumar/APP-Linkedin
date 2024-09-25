@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import MainAppBar from './MainAppBar'
+import './Reg.css';
 
 function RegistrationForm() {
     const [userData, setUserData] = useState({

@@ -14,6 +14,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useSnackbar } from 'notistack';
+import './PostApp';
 
 const postsData = [
   { type: 'image', content: 'First Image Post', media: '/path/to/image.jpg' },

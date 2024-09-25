@@ -1,0 +1,163 @@
+/* Container styling for centering and spacing with animated gradient background */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #00bcd4, #1a73e8, #ff4081);
+  background-size: 200% 200%; /* Creates a flowing effect */
+  animation: gradientBackground 8s ease infinite; /* Smooth animated gradient */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background gradient animation */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particle effect for background */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/circles.png'); /* Subtle particle effect */
+  opacity: 0.1;
+  z-index: 1;
+}
+
+/* Form box */
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Reduced max-width */
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent for layering */
+  border-radius: 20px;
+  padding: 20px; /* Reduced padding */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  text-align: center;
+  z-index: 2; /* To stay on top of the background effect */
+  animation: fadeIn 1s ease-out; /* Smooth fade-in */
+  backdrop-filter: blur(10px); /* Adds a blur effect behind form for a more immersive feel */
+}
+
+/* Typography styles */
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px; /* Reduced margin */
+  font-size: 1.75rem; /* Reduced font size */
+  letter-spacing: 1px;
+  position: relative;
+  animation: slideIn 0.8s ease-out; /* Heading sliding in */
+  background: linear-gradient(90deg, #ff4081, #1a73e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient color for heading */
+}
+
+/* Input fields with enhanced focus animation */
+.MuiTextField-root {
+  margin-bottom: 15px; /* Reduced margin */
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MuiTextField-root:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.MuiTextField-root:focus-within {
+  background-color: #e3f2fd; /* Light blue background when focused */
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.MuiButton-root {
+  padding: 10px 18px; /* Adjusted padding */
+  font-size: 14px; /* Reduced font size */
+  font-weight: bold;
+  text-transform: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.MuiButton-containedPrimary {
+  background-color: #ff4081; /* Vibrant pink button color */
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 64, 129, 0.4); /* Shadow for depth */
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #f50057;
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 12px 35px rgba(255, 64, 129, 0.6);
+}
+
+/* Dialog content */
+.dialog-content {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+/* Sign In Link */
+.signin-link {
+  margin-top: 15px;
+  font-size: 14px; /* Reduced font size */
+  color: #1a73e8;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: text-decoration 0.3s ease;
+}
+
+.signin-link:hover {
+  text-decoration: underline;
+}
+
+/* Animation for sign-up popup */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.MuiDialog-root {
+  animation: popupFadeIn 0.5s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .box {
+    width: 100%;
+    padding: 15px; /* Reduced padding */
+  }
+
+  h4 {
+    font-size: 1.5rem; /* Reduced font size */
+  }
+}

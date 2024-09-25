@@ -1,0 +1,194 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+
+/* Container */
+.container {
+  padding: 30px;
+  background: #ffffff;
+  min-height: 100vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Banner Section */
+.banner {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(80%);
+}
+
+.bannerImage:hover {
+  transform: scale(1.05);
+  filter: brightness(100%);
+}
+
+.bannerButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.bannerButton:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* Profile Image Section */
+.profileImage {
+  display: flex;
+  justify-content: center;
+  margin-top: -90px; /* Overlap the banner */
+}
+
+.profileImage img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileImage img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Details and About Sections */
+.sectionTitle {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.textField {
+  margin: 20px 0;
+}
+
+.saveButton, .editButton {
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.saveButton {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.editButton {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+}
+
+.editButton:hover {
+  background-color: #1e88e5;
+  transform: scale(1.05);
+}
+
+/* Education, Work Experience, and Certificates Sections */
+.sectionItem {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.sectionItem:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.addButton, .generateCVButton, .logoutButton {
+  border-radius: 5px;
+  padding: 12px 24px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.addButton {
+  background-color: #4caf50;
+}
+
+.addButton:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.generateCVButton {
+  background-color: #ff5722;
+}
+
+.generateCVButton:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+.logoutButton {
+  background-color: #f44336;
+  width: 100%;
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bannerImage {
+    height: 200px;
+  }
+  
+  .profileImage img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+}

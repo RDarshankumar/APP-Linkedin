@@ -5,15 +5,23 @@ import { styled } from '@mui/material/styles';
 import PostApp from './PostApp';
 import ProfilePage from './ProfilePage';
 
+// Custom Styled Components
+const NavbarContainer = styled(AppBar)(({ theme }) => ({
+  background: 'linear-gradient(to right, #2193b0, #6dd5ed)', // Gradient background
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+}));
+
 const SearchBar = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.grey[200],
+  backgroundColor: theme.palette.common.white,
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
   '&:hover': {
-    backgroundColor: theme.palette.grey[300],
+    backgroundColor: theme.palette.grey[100],
   },
   width: '50%',
   marginLeft: theme.spacing(2),
+  transition: 'background-color 0.3s ease', // Smooth background color transition
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -30,6 +38,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   width: '100%',
   paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+}));
+
+const NavbarButton = styled(Button)(({ theme }) => ({
+  transition: 'background-color 0.3s ease, transform 0.3s ease',
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark,
+    transform: 'scale(1.05)',
+  },
 }));
 
 const Navbar = () => {
@@ -95,9 +111,9 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <NavbarContainer position="static">
         <Toolbar>
-          <Typography variant="h6" noWrap onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
+          <Typography variant="h6" noWrap onClick={handleTitleClick} style={{ cursor: 'pointer', color: '#fff', transition: 'color 0.3s ease' }}>
             MyApp
           </Typography>
           <SearchBar>
@@ -110,7 +126,7 @@ const Navbar = () => {
 
           {/* New Job+ Button in Navbar */}
           {showNewJobButton && (
-            <Button
+            <NavbarButton
               variant="contained"
               color="primary"
               startIcon={<AddIcon />}
@@ -118,14 +134,14 @@ const Navbar = () => {
               sx={{ marginRight: 2 }}
             >
               New Job
-            </Button>
+            </NavbarButton>
           )}
 
           <IconButton color="inherit" onClick={handleProfileClick}>
-            <Avatar src={profileImage} />
+            <Avatar src={profileImage} sx={{ transition: 'transform 0.3s ease', '&:hover': { transform: 'scale(1.1)' } }} />
           </IconButton>
         </Toolbar>
-      </AppBar>
+      </NavbarContainer>
 
       {isProfileClicked ? (
         <ProfilePage onProfileImageChange={handleProfileImageChange} />
@@ -135,7 +151,7 @@ const Navbar = () => {
 
       {/* Job Post Modal */}
       <Modal open={jobModalOpen} onClose={handleJobModalClose}>
-        <Box p={4} bgcolor="white" mx="auto" my={8} borderRadius={2} maxWidth={500}>
+        <Box p={4} bgcolor="white" mx="auto" my={8} borderRadius={2} maxWidth={500} sx={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' }}>
           <Typography variant="h6">New Job Post</Typography>
           <TextField
             fullWidth

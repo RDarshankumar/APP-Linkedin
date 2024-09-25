@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography, TextField, Modal, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { Edit } from '@mui/icons-material';
 import jsPDF from 'jspdf'; // Import jsPDF
+import './Profile.css';
 
 const ProfilePage = ({ onProfileImageChange }) => {
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);

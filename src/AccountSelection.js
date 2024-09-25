@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './Account.css';
+
 
 const AccountSelection = () => {
   const navigate = useNavigate();
